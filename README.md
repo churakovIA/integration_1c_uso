@@ -14,4 +14,5 @@
 - MSSQL Server
 - JUnit
 - SLF4J & LogBack
-- Jackson 
+- Jackson
+- [Lombok](https://projectlombok.org) 

@@ -36,6 +36,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <tomcat.version>9.0.11</tomcat.version>
         <jackson-json.version>2.9.7</jackson-json.version>
+        <lombok.version>1.18.8</lombok.version>
         <!--webjars-->
         <webjars-bootstrap.version>4.3.1</webjars-bootstrap.version>
         <webjars-jquery.version>3.4.1</webjars-jquery.version>
@@ -149,6 +150,14 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson-json.version}</version>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
