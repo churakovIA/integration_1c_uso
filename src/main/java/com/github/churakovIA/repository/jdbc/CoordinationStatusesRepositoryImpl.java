@@ -3,7 +3,7 @@ package com.github.churakovIA.repository.jdbc;
 import com.github.churakovIA.model.CanCoordinated;
 import com.github.churakovIA.model.CoordinationStatus;
 import com.github.churakovIA.repository.CoordinationStatusesRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
+import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.SqlParameterValue;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -19,16 +19,10 @@ import static com.github.churakovIA.repository.jdbc.RowMapperUtil.getCoordinatio
 import static com.github.churakovIA.utils.UuidUtils.asBytes;
 
 @Repository
+@AllArgsConstructor
 public class CoordinationStatusesRepositoryImpl implements CoordinationStatusesRepository {
 
-    private final JdbcTemplate jdbcTemplate;
-
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-    public CoordinationStatusesRepositoryImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
-    }
 
     @Override
     public List<CoordinationStatus> getLastByDocuments(List<? extends CanCoordinated> docs) {

@@ -4,6 +4,7 @@ import com.github.churakovIA.model.AnalyticsAdjustment;
 import com.github.churakovIA.model.CoordinationStatus;
 import com.github.churakovIA.repository.AnaliticsAdjustmentRepository;
 import com.github.churakovIA.repository.CoordinationStatusesRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlParameterValue;
@@ -20,16 +21,11 @@ import static com.github.churakovIA.repository.jdbc.RowMapperUtil.getAnaliticsAd
 import static com.github.churakovIA.utils.UuidUtils.asBytes;
 
 @Repository
+@AllArgsConstructor
 public class AnaliticsAdjustmentRepositoryImpl implements AnaliticsAdjustmentRepository {
 
     private final JdbcTemplate jdbcTemplate;
-
     private final CoordinationStatusesRepository coordinationStatusesRepository;
-
-    public AnaliticsAdjustmentRepositoryImpl(JdbcTemplate jdbcTemplate, CoordinationStatusesRepository coordinationStatusesRepository) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.coordinationStatusesRepository = coordinationStatusesRepository;
-    }
 
     @Override
     public List<AnalyticsAdjustment> getAll(int rowStart, int pageSize) {

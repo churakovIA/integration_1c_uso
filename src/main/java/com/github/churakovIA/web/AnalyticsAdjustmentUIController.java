@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,14 +21,15 @@ public class AnalyticsAdjustmentUIController {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    AnaliticsAdjustmentRepository repository;
+    private AnaliticsAdjustmentRepository repository;
 
     public AnalyticsAdjustmentUIController(AnaliticsAdjustmentRepository repository) {
         this.repository = repository;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    List<AnalyticsAdjustmentTo> getAll(@RequestParam int length, @RequestParam int start, @RequestParam("search[value]") String str, HttpServletRequest request) {
+    List<AnalyticsAdjustmentTo> getAll(@RequestParam int length, @RequestParam int start,
+                                       @RequestParam("search[value]") String str) {
         log.debug("getAll start:{}, length:{}", start, length);
         List<AnalyticsAdjustment> docs = "".equals(str) ? repository.getAll(start, length) :
                 repository.getAllFiltered(start, length, str);
